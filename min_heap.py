@@ -60,3 +60,21 @@ def heapify_up(self):
       print("Heap of {0} elements restored with {1} swaps"
             .format(element_count, swap_count))
       print("")    
+def heapify_down(self):
+    idx = 1
+    # starts at 1 because we swapped first and last elements
+    swap_count = 1
+    while self.child_present(idx):
+      smaller_child_idx = self.get_smaller_child_idx(idx)
+      if self.heap_list[idx] > self.heap_list[smaller_child_idx]:
+        swap_count += 1
+        tmp = self.heap_list[smaller_child_idx]
+        self.heap_list[smaller_child_idx] = self.heap_list[idx]
+        self.heap_list[idx] = tmp
+      idx = smaller_child_idx
+
+    element_count = len(self.heap_list)
+    if element_count >= 10000:
+      print("Heap of {0} elements restored with {1} swaps"
+            .format(element_count, swap_count))
+      print("")  
