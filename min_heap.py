@@ -43,3 +43,20 @@ lass MinHeap:
         return self.left_child_idx(idx)
       else:
         return self.right_child_idx(idx)
+
+def heapify_up(self):
+    idx = self.count
+    swap_count = 0
+    while self.parent_idx(idx) > 0:
+      if self.heap_list[self.parent_idx(idx)] > self.heap_list[idx]:
+        swap_count += 1
+        tmp = self.heap_list[self.parent_idx(idx)]
+        self.heap_list[self.parent_idx(idx)] = self.heap_list[idx]
+        self.heap_list[idx] = tmp
+      idx = self.parent_idx(idx)
+
+    element_count = len(self.heap_list)
+    if element_count > 10000:
+      print("Heap of {0} elements restored with {1} swaps"
+            .format(element_count, swap_count))
+      print("")    
